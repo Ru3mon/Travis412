@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:17.0 # Uses Java 17 (Standard)
+    steps:
+      - checkout
+      - run:
+          name: Build and Test
+          command: mvn clean test # Runs Maven to test your Java code
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
